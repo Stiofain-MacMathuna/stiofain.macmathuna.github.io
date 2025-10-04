@@ -1,15 +1,259 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Stephen McMahon - Portfolio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+        }
+
+        header {
+            background-color: #121212;
+            color: #f0f0f0;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            color: #36a3f7;
+        }
+
+        header p {
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        section {
+            max-width: 1000px;
+            margin: auto;
+            padding: 2rem 1rem;
+        }
+
+        .skills {
+            margin-top: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #0366d6;
+            color: white;
+            padding: 4px 10px;
+            margin: 2px 4px 2px 0;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        .project-card {
+            background-color: #2b2b2b;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s, opacity 0.6s ease;
+            opacity: 0;
+            animation: fadeIn 0.8s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.9);
+        }
+
+        .project-card h2 {
+            color: #36a3f7;
+            margin-top: 0;
+        }
+
+        .project-card ul {
+            margin: 0.5rem 0 0 1.2rem;
+        }
+
+        .links a {
+            margin-right: 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .role, .cloud-stack, .tech-stack {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-top: 0.5rem;
+        }
+
+        .live-btn {
+            background-color: #28a745;
+            color: white; /* High contrast for readability */
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-right: 1rem;
+            display: inline-block;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+        }
+
+        .live-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.7);
+            background-color: #2ecc71;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Stephen McMahon - Portfolio</h1>
-    <ul>
-        <li><a href="https://github.com/Stiofain-MacMathuna/scriobh">Scríobh - Notes Web Application</a></li>
-        <li><a href="https://github.com/Stiofain-MacMathuna/airgead">Airgead - Secure Finance App</a></li>
-        <li><a href="https://github.com/Stiofain-MacMathuna/crowdscope">CrowdScope - Predict and Visualize Busyness in Manhattan</a></li>
-    </ul>
+
+<header>
+    <h1>Stephen McMahon</h1>
+    <p>MSc Computer Science (Conversion) Student | Backend, Cloud & DevOps | Graduating Dec 2025</p>
+
+    <div class="skills">
+        <strong>Languages:</strong>
+        <span class="badge">Java</span>
+        <span class="badge">Python</span>
+        <span class="badge">JavaScript</span>
+        <span class="badge">SQL</span>
+        <span class="badge">Bash</span>
+        <span class="badge">HTML</span>
+        <span class="badge">CSS</span>
+        <span class="badge">Kotlin</span>
+        <br>
+
+        <strong>Frameworks & Libraries:</strong>
+        <span class="badge">Spring Boot</span>
+        <span class="badge">FastAPI</span>
+        <span class="badge">React</span>
+        <span class="badge">Vite</span>
+        <span class="badge">Spark</span>
+        <span class="badge">Hadoop</span>
+        <span class="badge">GraphX</span>
+        <span class="badge">scikit-learn</span>
+        <span class="badge">pandas</span>
+        <br>
+
+        <strong>Tools & Platforms:</strong>
+        <span class="badge">Git</span>
+        <span class="badge">Docker</span>
+        <span class="badge">Kubernetes (Basic)</span>
+        <span class="badge">JIRA</span>
+        <span class="badge">Alembic</span>
+        <br>
+
+        <strong>Databases:</strong>
+        <span class="badge">PostgreSQL</span>
+        <span class="badge">MySQL</span>
+        <span class="badge">MongoDB</span>
+        <span class="badge">AWS RDS</span>
+        <br>
+
+        <strong>Cloud & DevOps:</strong>
+        <span class="badge">AWS (EC2, RDS, S3)</span>
+        <span class="badge">Azure (VMs, PostgreSQL)</span>
+        <span class="badge">CI/CD</span>
+    </div>
+
+    <div class="links" style="margin-top:1rem;">
+        <a href="https://github.com/Stiofain-MacMathuna" target="_blank">GitHub</a>
+    </div>
+</header>
+
+<section>
+    <div class="project-card">
+        <h2>Scríobh - Secure Notes Web Application              </h2>
+        <p>Full-stack web app for securely creating, storing, and managing personal notes.</p>
+        <p class="role"><strong>Role:</strong> Full-stack Developer</p>
+        <ul>
+            <li>Secure authentication with JWT and encrypted note storage</li>
+            <li>RESTful API with FastAPI & SQLAlchemy</li>
+            <li>Responsive React frontend</li>
+        </ul>
+        <p class="cloud-stack"><strong>Cloud/Deployment:</strong> Docker, AWS EC2 + RDS, NGINX, HTTPS</p>
+        <div class="links">
+            <a href="https://www.scriobh.io" target="_blank" class="live-btn">Live Demo</a>
+            <a href="https://github.com/Stiofain-MacMathuna/scriobh" target="_blank">GitHub</a>
+        </div>
+        <p class="tech-stack"><span class="badge">FastAPI</span> <span class="badge">React</span> <span class="badge">PostgreSQL</span> <span class="badge">Docker</span> <span class="badge">AWS</span></p>
+    </div>
+
+    <div class="project-card">
+        <h2>Airgead - Secure Finance App</h2>
+        <p>Full-stack financial ledger application for securely tracking and managing personal finances.</p>
+        <p class="role"><strong>Role:</strong> Full-stack Developer</p>
+        <ul>
+            <li>Secure REST API with Java Spring Boot</li>
+            <li>Responsive frontend with React/Vite + Tailwind</li>
+            <li>JWT authentication for secure sessions</li>
+        </ul>
+        <p class="cloud-stack"><strong>Cloud/Deployment:</strong> Docker, Azure VM + PostgreSQL, NGINX, HTTPS</p>
+        <div class="links">
+            <a href="https://airgead.io" target="_blank" class="live-btn">Live Demo</a>
+            <a href="https://github.com/Stiofain-MacMathuna/airgead" target="_blank">GitHub</a>
+        </div>
+        <p class="tech-stack"><span class="badge">Spring Boot</span> <span class="badge">React</span> <span class="badge">PostgreSQL</span> <span class="badge">Azure</span> <span class="badge">Docker</span></p>
+    </div>
+
+    <div class="project-card">
+        <h2>CrowdScope - Predictive Heatmap</h2>
+        <p>Research practicum project showcasing predictive geospatial heatmaps and backend optimizations.</p>
+        <p class="role"><strong>Role:</strong> Backend Lead</p>
+        <ul>
+            <li>Asynchronous FastAPI backend with PostgreSQL connection pooling</li>
+            <li>Optimized API routes for 80k–90k rows/day</li>
+            <li>Performance monitoring via Prometheus + Grafana</li>
+            <li>Native Android app in Kotlin consuming the API</li>
+        </ul>
+        <p class="cloud-stack"><strong>Cloud/Deployment:</strong> Render, custom domain + SSL, CI/CD</p>
+        <div class="links">
+            <a href="https://crowdscope.io" target="_blank" class="live-btn">Live Deployment</a>
+            <a href="https://github.com/Stiofain-MacMathuna/crowdscope" target="_blank">GitHub</a>
+        </div>
+        <p class="tech-stack"><span class="badge">FastAPI</span> <span class="badge">PostgreSQL</span> <span class="badge">Mapbox</span> <span class="badge">Render</span> <span class="badge">Kotlin</span> <span class="badge">Prometheus</span> <span class="badge">Grafana</span></p>
+    </div>
+
+    <div class="project-card">
+        <h2>Process Management Toolkit</h2>
+        <p>Bash-based CLI utility for inspecting and managing system processes.</p>
+        <p class="role"><strong>Role:</strong> Developer</p>
+        <ul>
+            <li>View processes with color-coded status indicators</li>
+            <li>Search by username or binary name</li>
+            <li>Send critical signals (SIGKILL, SIGTERM)</li>
+            <li>Log actions and export reports</li>
+        </ul>
+        <p class="cloud-stack"><strong>Cloud/Deployment:</strong> N/A</p>
+        <div class="links">
+            <a href="https://github.com/Stiofain-MacMathuna/process-management-toolkit" target="_blank">GitHub</a>
+        </div>
+        <p class="tech-stack"><span class="badge">Bash</span> <span class="badge">Unix Tools</span></p>
+    </div>
+</section>
+
+<footer>
+    &copy; 2025 Stephen McMahon | <a href="https://github.com/Stiofain-MacMathuna" target="_blank" style="color:#36a3f7;">GitHub</a>
+</footer>
+
 </body>
 </html>
