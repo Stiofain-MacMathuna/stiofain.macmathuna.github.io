@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Stephen McMahon - Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -49,6 +50,12 @@
             margin: 2px 4px 2px 0;
             border-radius: 12px;
             font-size: 0.85rem;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .badge:hover {
+            transform: translateY(-2px);
+            background-color: #0580e0;
         }
 
         .project-card {
@@ -57,15 +64,14 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.7);
             padding: 1.8rem;
             margin-bottom: 2rem;
-            transition: transform 0.2s, box-shadow 0.2s, opacity 0.6s ease;
             opacity: 0;
-            animation: fadeIn 0.8s forwards;
+            transform: translateY(20px);
+            transition: transform 0.6s ease, opacity 0.6s ease;
         }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .project-card:hover {
@@ -82,34 +88,70 @@
             margin: 0.5rem 0 0 1.2rem;
         }
 
-        .links a {
-            margin-right: 1rem;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .role, .cloud-stack, .tech-stack {
+        .role, .cloud-stack, .tech-stack, .optimizations {
             font-size: 0.9rem;
             color: #ccc;
             margin-top: 0.5rem;
         }
 
+        .links {
+            margin-top: 1rem;
+        }
+
+        /* Live Demo button with tooltip */
         .live-btn {
-            background-color: #28a745;
-            color: white; /* High contrast for readability */
+            position: relative;
+            background: linear-gradient(135deg, #36a3f7, #4CAFEE);
+            color: #fff;
             font-weight: bold;
-            padding: 8px 16px;
+            padding: 10px 18px;
             border-radius: 8px;
             text-decoration: none;
             margin-right: 1rem;
             display: inline-block;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
         }
 
         .live-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 15px rgba(0,0,0,0.7);
-            background-color: #2ecc71;
+            background: linear-gradient(135deg, #4CAFEE, #36a3f7);
+        }
+
+        .live-btn::after {
+            content: "Click to view live project";
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            font-size: 0.85rem;
+            z-index: 10;
+        }
+
+        .live-btn:hover::after {
+            opacity: 1;
+        }
+
+        /* Additional spacing for CrowdScope tile buttons */
+        .crowdscope .links {
+            margin-top: 1.5rem;
+        }
+
+        a.github-link {
+            color: #f0f0f0;
+            transition: color 0.2s ease;
+        }
+
+        a.github-link:hover {
+            color: #ffffff;
         }
 
         footer {
@@ -119,8 +161,39 @@
             color: #777;
         }
 
-        a:hover {
-            text-decoration: underline;
+        /* Mobile-Friendly Tweaks */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .project-card {
+                padding: 1.2rem;
+            }
+
+            .project-card h2 {
+                font-size: 1.4rem;
+            }
+
+            .badge {
+                padding: 3px 8px;
+                font-size: 0.75rem;
+            }
+
+            .live-btn {
+                padding: 6px 12px;
+                margin-bottom: 6px;
+                display: block;
+            }
+
+            .links a {
+                margin-bottom: 6px;
+                display: block;
+            }
         }
     </style>
 </head>
@@ -176,13 +249,14 @@
     </div>
 
     <div class="links" style="margin-top:1rem;">
-        <a href="https://github.com/Stiofain-MacMathuna" target="_blank">GitHub</a>
+        <a href="https://github.com/Stiofain-MacMathuna" class="github-link" target="_blank">GitHub</a>
     </div>
 </header>
 
 <section>
+    <!-- Scriobh -->
     <div class="project-card">
-        <h2>Scríobh - Secure Notes Web Application              </h2>
+        <h2>Scríobh - Secure Notes Web Application</h2>
         <p>Full-stack web app for securely creating, storing, and managing personal notes.</p>
         <p class="role"><strong>Role:</strong> Full-stack Developer</p>
         <ul>
@@ -193,11 +267,12 @@
         <p class="cloud-stack"><strong>Cloud/Deployment:</strong> Docker, AWS EC2 + RDS, NGINX, HTTPS</p>
         <div class="links">
             <a href="https://www.scriobh.io" target="_blank" class="live-btn">Live Demo</a>
-            <a href="https://github.com/Stiofain-MacMathuna/scriobh" target="_blank">GitHub</a>
+            <a href="https://github.com/Stiofain-MacMathuna/scriobh" target="_blank" class="github-link">GitHub</a>
         </div>
         <p class="tech-stack"><span class="badge">FastAPI</span> <span class="badge">React</span> <span class="badge">PostgreSQL</span> <span class="badge">Docker</span> <span class="badge">AWS</span></p>
     </div>
 
+    <!-- Airgead -->
     <div class="project-card">
         <h2>Airgead - Secure Finance App</h2>
         <p>Full-stack financial ledger application for securely tracking and managing personal finances.</p>
@@ -210,50 +285,60 @@
         <p class="cloud-stack"><strong>Cloud/Deployment:</strong> Docker, Azure VM + PostgreSQL, NGINX, HTTPS</p>
         <div class="links">
             <a href="https://airgead.io" target="_blank" class="live-btn">Live Demo</a>
-            <a href="https://github.com/Stiofain-MacMathuna/airgead" target="_blank">GitHub</a>
+            <a href="https://github.com/Stiofain-MacMathuna/airgead" target="_blank" class="github-link">GitHub</a>
         </div>
-        <p class="tech-stack"><span class="badge">Spring Boot</span> <span class="badge">React</span> <span class="badge">PostgreSQL</span> <span class="badge">Azure</span> <span class="badge">Docker</span></p>
+        <p class="tech-stack"><span class="badge">Spring Boot</span> <span class="badge">React</span> <span class="badge">PostgreSQL</span> <span class="badge">Docker</span> <span class="badge">Azure</span></p>
     </div>
 
-    <div class="project-card">
+    <!-- CrowdScope -->
+    <div class="project-card crowdscope">
         <h2>CrowdScope - Predictive Heatmap</h2>
-        <p>Research practicum project showcasing predictive geospatial heatmaps and backend optimizations.</p>
+        <p>Research project to predict urban crowd density and visualize geospatial data.</p>
         <p class="role"><strong>Role:</strong> Backend Lead</p>
         <ul>
-            <li>Asynchronous FastAPI backend with PostgreSQL connection pooling</li>
-            <li>Optimized API routes for 80k–90k rows/day</li>
-            <li>Performance monitoring via Prometheus + Grafana</li>
-            <li>Native Android app in Kotlin consuming the API</li>
+            <li>Asynchronous FastAPI backend with connection pooling</li>
+            <li>Optimized API: avg response time 6.02s → 0.32s, throughput 0.91 → 5.29 req/sec</li>
+            <li>Deployed backend + Android mobile client using Mapbox heatmap</li>
         </ul>
-        <p class="cloud-stack"><strong>Cloud/Deployment:</strong> Render, custom domain + SSL, CI/CD</p>
+        <p class="cloud-stack"><strong>Cloud/Deployment:</strong> Render, PostgreSQL, Prometheus/Grafana</p>
         <div class="links">
             <a href="https://crowdscope.io" target="_blank" class="live-btn">Live Deployment</a>
-            <a href="https://github.com/Stiofain-MacMathuna/crowdscope" target="_blank">GitHub</a>
+            <a href="https://github.com/Stiofain-MacMathuna/manhattan-heatmap-forecast" target="_blank" class="github-link">GitHub</a>
         </div>
-        <p class="tech-stack"><span class="badge">FastAPI</span> <span class="badge">PostgreSQL</span> <span class="badge">Mapbox</span> <span class="badge">Render</span> <span class="badge">Kotlin</span> <span class="badge">Prometheus</span> <span class="badge">Grafana</span></p>
+        <p class="tech-stack"><span class="badge">FastAPI</span> <span class="badge">PostgreSQL</span> <span class="badge">Mapbox</span> <span class="badge">Docker</span> <span class="badge">Kotlin</span></p>
     </div>
 
+    <!-- Process Management Toolkit -->
     <div class="project-card">
         <h2>Process Management Toolkit</h2>
-        <p>Bash-based CLI utility for inspecting and managing system processes.</p>
+        <p>Bash CLI utility for inspecting and managing system processes.</p>
         <p class="role"><strong>Role:</strong> Developer</p>
         <ul>
-            <li>View processes with color-coded status indicators</li>
-            <li>Search by username or binary name</li>
-            <li>Send critical signals (SIGKILL, SIGTERM)</li>
-            <li>Log actions and export reports</li>
+            <li>Color-coded process list, signal handling, logging, and report export</li>
+            <li>Search, filter, and send signals to processes efficiently</li>
         </ul>
-        <p class="cloud-stack"><strong>Cloud/Deployment:</strong> N/A</p>
         <div class="links">
-            <a href="https://github.com/Stiofain-MacMathuna/process-management-toolkit" target="_blank">GitHub</a>
+            <a href="https://github.com/Stiofain-MacMathuna/process-management-toolkit" target="_blank" class="github-link">GitHub</a>
         </div>
-        <p class="tech-stack"><span class="badge">Bash</span> <span class="badge">Unix Tools</span></p>
+        <p class="tech-stack"><span class="badge">Bash</span> <span class="badge">Unix</span></p>
     </div>
 </section>
 
 <footer>
-    &copy; 2025 Stephen McMahon | <a href="https://github.com/Stiofain-MacMathuna" target="_blank" style="color:#36a3f7;">GitHub</a>
+    &copy; 2025 Stephen McMahon
 </footer>
+
+<script>
+    // Fade-in animation for project cards
+    document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".project-card");
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add("visible");
+            }, 200 * index);
+        });
+    });
+</script>
 
 </body>
 </html>
